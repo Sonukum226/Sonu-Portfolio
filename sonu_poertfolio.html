@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sonu Kumar | Software Developer Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+      --transition: 200ms ease;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.96), transparent);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 0 0, #4f46e5, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #e5e7eb;
+      box-shadow: 0 12px 30px rgba(129, 140, 248, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .brand-title {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.86rem;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.6rem;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: background var(--transition), color var(--transition),
+        border-color var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.95);
+      color: #e5e7eb;
+      border-color: rgba(55, 65, 81, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.primary-link {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.45);
+    }
+
+    .nav-links a.primary-link:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px) scale(1.01);
+    }
+
+    .nav-toggle {
+      display: none;
+      cursor: pointer;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    main {
+      flex: 1;
+      padding: 2.2rem 0 2.8rem;
+    }
+
+    section {
+      padding: 2rem 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-header {
+      margin-bottom: 1.35rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.15rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 2.2rem;
+      align-items: center;
+      padding-top: 1.3rem;
+      padding-bottom: 2.3rem;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.76rem;
+      padding: 0.27rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.35), rgba(15, 23, 42, 0.95));
+      color: #e5e7eb;
+      width: fit-content;
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.26rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.86rem;
+      cursor: pointer;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background var(--transition), transform var(--transition),
+        box-shadow var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: white;
+      box-shadow: 0 16px 40px rgba(79, 70, 229, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      filter: brightness(1.04);
+    }
+
+    .btn-ghost {
+      border-color: rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(75, 85, 99, 0.95);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.3), rgba(15, 23, 42, 0.98));
+      border-radius: 28px;
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      /* max-width: 360px;
+      width: 100%; */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.25) 0, transparent 55%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .hero-card-pill {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.85);
+      color: var(--muted);
+    }
+
+    .hero-card-body {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 20px;
+      padding: 0.9rem;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-rows {
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-card-row-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.18rem;
+    }
+
+    .hero-card-row-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .hero-card-tag {
+      font-size: 0.72rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-card-signal {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hero-card-bar {
+      width: 3px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(55, 65, 81, 0.9);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card-bar-inner {
+      position: absolute;
+      inset: auto auto 0 0;
+      width: 100%;
+      height: 70%;
+      border-radius: inherit;
+      background: linear-gradient(to top, #22c55e, #a3e635);
+    }
+
+    .hero-card-bar:nth-child(2) .hero-card-bar-inner {
+      height: 90%;
+    }
+
+    .hero-card-bar:nth-child(3) .hero-card-bar-inner {
+      height: 55%;
+    }
+
+    .hero-card-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    /* Experience */
+
+    .grid-two {
+      display: flex;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(30, 64, 175, 0.25), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 1.1rem 1rem;
+      box-shadow: var(--shadow-soft);
+      width: 100%;
+    }
+
+    .card-header-inline {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .card-pill {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--muted);
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+
+    .exp-item {
+      padding: 0.8rem 0;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-role {
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .exp-meta {
+      text-align: right;
+      font-size: 0.76rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .exp-list {
+      margin-top: 0.35rem;
+      padding-left: 0.95rem;
+      font-size: 0.8rem;
+      color: #d1d5db;
+    }
+
+    .exp-list li+li {
+      margin-top: 0.22rem;
+    }
+
+    /* Skills */
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.76rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      white-space: nowrap;
+    }
+
+    .pill-soft {
+      background: var(--accent-soft);
+      border-color: rgba(129, 140, 248, 0.7);
+    }
+
+    .skills-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.4rem;
+    }
+
+    .skills-column-title {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    /* Education & Achievements */
+
+    .edu-item {
+      padding: 0.7rem 0;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      font-size: 0.82rem;
+    }
+
+    .edu-degree {
+      font-weight: 500;
+    }
+
+    .edu-institute {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .edu-meta {
+      margin-top: 0.15rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .ach-list {
+      font-size: 0.8rem;
+      padding-left: 0.95rem;
+    }
+
+    /* Contact */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .contact-value {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .contact-badge {
+      font-size: 0.74rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .contact-form {
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.25), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 1rem 0.9rem 0.9rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.82rem;
+    }
+
+    .contact-form-row {
+      display: grid;
+      gap: 0.55rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-form-row label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .contact-form-row input,
+    .contact-form-row textarea {
+      width: 100%;
+      border-radius: 11px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 0.5rem 0.65rem;
+      color: #e5e7eb;
+      font-family: inherit;
+      font-size: 0.8rem;
+      resize: vertical;
+      min-height: 34px;
+    }
+
+    .contact-form-row input:focus,
+    .contact-form-row textarea:focus {
+      outline: none;
+      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.6);
+    }
+
+    .contact-hint {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .contact-toast {
+      display: none;
+      margin-top: 0.45rem;
+      font-size: 0.76rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.15);
+      border: 1px solid rgba(22, 163, 74, 0.6);
+      color: #bbf7d0;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.95);
+      padding: 1.2rem 0 1.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .footer-links a:hover {
+      border-color: rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero-card {
+        max-width: 420px;
+      }
+
+      .grid-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        position: absolute;
+        inset: 100% 1.25rem auto;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.98);
+        border: 1px solid rgba(31, 41, 55, 0.95);
+        padding: 0.6rem;
+        display: none;
+        flex-direction: column;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 520px) {
+      main {
+        padding-top: 1.5rem;
+      }
+
+      .hero {
+        padding-top: 0.4rem;
+      }
+
+      .card {
+        padding: 0.95rem 0.85rem;
+      }
+
+      .hero-card {
+        padding: 0.95rem 0.9rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header>
+      <div class="container nav">
+        <div class="nav-left">
+          <div class="avatar" style="display: none;">
+            <!-- <img alt="SK" src="https://drive.google.com/thumbnail?id=1Tjx9SOStPvTmhQ958bPdxjl-ekdHG7Ju&sz=w1000" width="18"
+              height="18" /> -->
+          </div>
+          <div class="brand" style="margin-left: 24px;">
+            <span class="brand-name">Sonu Kumar</span>
+            <span class="brand-title">Software Developer Engineer</span>
+          </div>
+        </div>
+
+        <nav>
+          <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+            Menu
+          </button>
+          <div class="nav-links" id="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact" class="primary-link">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- HERO -->
+      <section id="about" class="hero">
+        <div class="hero-left">
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            <span>Open to impactful SDE roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="hero-highlight">Sonu Kumar</span> —
+            a Software Developer Engineer crafting robust frontend experiences.
+          </h1>
+
+          <p class="hero-subtitle">
+            Software Engineer with over 2+ years of experience in building and managing products and teams. Specialized in front-end
+            technologies with some hands-on experience in back-end system. Proven track record in optimizing development
+            processes,
+            improving user experience, and delivering maintainable high-quality code. Known for strong problem solving abilities,
+            attention
+            to detail, and effective collaboration within cross-functional teams.
+            <!-- I build production-grade interfaces with <strong>React, TypeScript, Redux, and modern UI systems</strong>.
+            I've independently owned frontend for analytics dashboards, return workflows, and post-purchase experiences
+            across high-traffic platforms. -->
+          </p>
+
+          <div class="hero-meta">
+            <span>📍 Bangalore, India</span>
+            <span>💼 SDE @ Gokwik</span>
+            <span>🎓 B.Tech CSE — Lovely Professional University</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#experience" class="btn btn-primary">
+              View Experience
+            </a>
+            <a href="mailto:sonukum870@gmail.com" class="btn btn-ghost">
+              Email Me
+            </a>
+            <a href="https://www.linkedin.com/in/sonu-kumar-614413192/" target="_blank" class="btn btn-ghost">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <aside class="hero-card" aria-label="Snapshot of my profile">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Frontend Snapshot</div>
+                <div class="hero-card-row-label">Recent focus</div>
+              </div>
+              <div class="hero-card-pill">SDE · 2+ yrs</div>
+            </div>
+            <div class="hero-card-body">
+              <div class="hero-card-rows">
+                <div>
+                  <div class="hero-card-row-label">Core Stack</div>
+                  <div class="hero-card-row-tags">
+                    <span class="hero-card-tag">React</span>
+                    <span class="hero-card-tag">TypeScript</span>
+                    <span class="hero-card-tag">Redux</span>
+                    <span class="hero-card-tag">JavaScript</span>
+                    <span class="hero-card-tag">HTML &amp; CSS</span>
+                    <span class="hero-card-tag">Antd</span>
+                    <span class="hero-card-tag">Polaris</span>
+                    <span class="hero-card-tag">Material Ui</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="hero-card-row-label">Recent Work</div>
+                  <div class="hero-card-row-tags">
+                    <span class="hero-card-tag">Return Prime DIY Platform</span>
+                    <span class="hero-card-tag">Return Prime Dashboard</span>
+                    <span class="hero-card-tag">Analytics Dashboard</span>
+                    <span class="hero-card-tag">Shopify customizations</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="hero-card-row-label">Impact Highlights</div>
+                  <div class="hero-card-row-tags">
+                    <span class="hero-card-tag">Kreditbee component library</span>
+                    <span class="hero-card-tag">Improved loan conversion</span>
+                    <span class="hero-card-tag">Star Performer 2023</span>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="hero-card-footer">
+              <div class="hero-card-signal">
+                <span class="hero-card-bar"><span class="hero-card-bar-inner"></span></span>
+                <span class="hero-card-bar"><span class="hero-card-bar-inner"></span></span>
+                <span class="hero-card-bar"><span class="hero-card-bar-inner"></span></span>
+                <span style="font-size:0.72rem;">UI quality</span>
+              </div>
+              <div>
+                <span class="hero-card-dot"></span>
+                Available for collaboration
+              </div>
+            </div> -->
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="section-header">
+          <div class="section-kicker">Experience</div>
+          <h2 class="section-title">Professional Experience</h2>
+          <p class="section-subtitle">
+            Building production-ready interfaces, analytics, and workflows across fintech and e-commerce ecosystems.
+          </p>
+        </div>
+
+        <div class="grid-two">
+          <!-- Recent role -->
+          <article class="card">
+            <div class="card-header-inline">
+              <div>
+                <h3 class="card-title">Software Developer Engineer</h3>
+                <div class="card-subtitle">Gokwik · Bangalore, India · Hybrid</div>
+              </div>
+              <div class="card-pill">Nov 2024 – Present</div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Return Prime DIY Platform</div>
+                  <div class="exp-company">Owned entire frontend implementation</div>
+                </div>
+              </div>
+              <ul class="exp-list">
+                <li>Independently developed the complete frontend for the Return Prime DIY platform using React.</li>
+                <li>Integrated third-party logistics, refund processing, and reverse pickup flows for seamless merchant
+                  experiences.</li>
+                <li>Used React Flow to build interactive, customizable workflow visualizations.</li>
+                <li>Built a Postman-like interface that parses cURL commands into structured fields (headers, params,
+                  body) to simplify API testing.</li>
+                <li>Implemented multi-tab workflows with CURL, CODE, and PARSE views and a listing page for managing
+                  integrations.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Return Prime Dashboard</div>
+                  <div class="exp-company">Analytics &amp; UI systems</div>
+                </div>
+              </div>
+              <ul class="exp-list">
+                <li>Improved <b>First Contentful Paint (FCP)</b> performance, reducing page load time.</li>
+                <li>Developed the analytics section frontend, surfacing store insights like return &amp; exchange trends
+                  across date ranges.</li>
+                <li>Upgraded Polaris UI and React versions to keep the dashboard aligned with modern UI patterns and
+                  performance.</li>
+                <li>Designed a feature flag component to support phased rollouts, A/B testing, and dynamic behavior control.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Shopify Development</div>
+                  <div class="exp-company">Custom storefront solutions</div>
+                </div>
+              </div>
+              <ul class="exp-list">
+                <li>Leveraged deep understanding of Shopify capabilities and constraints to design practical solutions.
+                </li>
+                <li>Authored custom JavaScript to tailor store pages to merchant-specific requirements and flows.</li>
+                <li>I have customized the frontend of the Returns and Exchange pages for top brands including Levi's,
+                  Libas, Go Colors, and Saadaa.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Previous role -->
+          <article class="card">
+            <div class="card-header-inline">
+              <div>
+                <h3 class="card-title">Software Developer Engineer</h3>
+                <div class="card-subtitle">Krazybee Services Pvt. Ltd. · Bangalore, India</div>
+              </div>
+              <div class="card-pill">Aug 2022 – Apr 2024</div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Kreditbee Application</div>
+                  <div class="exp-company">Fintech user journeys</div>
+                </div>
+                <div class="exp-meta">Loan &amp; income flows</div>
+              </div>
+              <ul class="exp-list">
+                <li>Built components for Kreditbee Component Library, including inputs for numbers, phone numbers,
+                  multi-select and many more</li>
+                <li>Designed and implemented user-friendly interfaces, improving loan conversion rates and reducing user
+                  complaints.</li>
+                <li>Built reusable React components with TypeScript, enhancing type safety, scalability, and
+                  maintainability.</li>
+                <li>Optimized performance using React lifecycle methods, reducing rendering time and improving state
+                  management.</li>
+                <li>Used Redux-Saga for robust asynchronous workflows, simplifying complex side-effect handling.</li>
+                <li>Converted class components to functional components, aligning with modern React practices.</li>
+                <li>Enhanced the Income Verification flow UI and other features, improving responsiveness and user
+                  retention.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Design Systems &amp; Quality</div>
+                  <div class="exp-company">Storybook &amp; component libraries</div>
+                </div>
+              </div>
+              <ul class="exp-list">
+                <li>Led improvements to Storybook, driving faster reusable component creation and reducing bugs.</li>
+                <li>Collaborated closely with design teams using Figma and maintained a high standard of UI quality.
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-header">
+          <div class="section-kicker">Skills</div>
+          <h2 class="section-title">Technical &amp; Professional Skills</h2>
+          <p class="section-subtitle">
+            A frontend-leaning skill set with strong React &amp; TypeScript foundations, supported by solid tooling and
+            collaboration skills.
+          </p>
+        </div>
+
+        <article class="card">
+          <div class="skills-columns">
+            <div>
+              <div class="skills-column-title">Technical Skills</div>
+              <div class="pill-row">
+                <span class="pill pill-soft">React</span>
+                <span class="pill">Redux</span>
+                <span class="pill">TypeScript</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">Material UI</span>
+                <span class="pill">Ant Design</span>
+                <span class="pill">Storybook</span>
+                <span class="pill">Node.js</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="skills-column-title">Soft Skills &amp; Tools</div>
+              <div class="pill-row">
+                <span class="pill">Time Management</span>
+                <span class="pill">Adaptability</span>
+                <span class="pill">Teamwork</span>
+                <span class="pill">Communication</span>
+                <span class="pill">Leadership</span>
+                <span class="pill">Git &amp; GitHub</span>
+                <span class="pill">AWS</span>
+                <span class="pill">Postman</span>
+                <span class="pill">VS Code</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- EDUCATION & ACHIEVEMENTS -->
+      <section id="education">
+        <div class="section-header">
+          <div class="section-kicker">Education &amp; Recognition</div>
+          <h2 class="section-title">Academic Background &amp; Achievements</h2>
+        </div>
+
+        <div class="grid-two">
+          <article class="card">
+            <h3 class="card-title">Education</h3>
+            <div class="edu-item">
+              <div class="edu-degree">Bachelor of Technology in Computer Science and Engineering (CSE)</div>
+              <div class="edu-institute">Lovely Professional University, Jalandhar, Punjab, India</div>
+              <div class="edu-meta">
+                Aug 2019 - Jul 2023 · CGPA: 8.25 / 10
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Achievements</h3>
+            <ul class="ach-list">
+              <li>Awarded <strong>Star Performer (July 2023)</strong> at Krazybee for dedication, outstanding
+                contributions, and commitment to excellence within the team.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="section-subtitle">
+            Whether it's a new opportunity, collaboration, or a discussion around frontend architecture — I'm happy to
+            chat.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-details">
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <span class="contact-badge">Primary</span>
+                <a href="mailto:sonukum870@gmail.com">sonukum870@gmail.com</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">
+                <span class="contact-badge">WhatsApp / Call</span>
+                <a href="tel:+917667984847">+91-76679 84847</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">
+                <span class="contact-badge">Professional</span>
+                <a href="https://www.linkedin.com/in/sonu-kumar-614413192/" target="_blank">
+                  linkedin.com/in/sonu-kumar-614413192
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" required />
+          </div>
+          <div class="contact-form-row">
+            <label for="email">Your Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="contact-form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="3" placeholder="Write a short message..." required></textarea>
+            <div class="contact-hint">
+              This demo form won't actually send an email — it'll just show a success toast.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            Send Message
+          </button>
+          <div class="contact-toast" id="contact-toast">
+            ✅ Thanks for reaching out! I'll get back to you soon.
+          </div>
+        </form> -->
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Sonu Kumar. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#about">Top</a>
+          <a href="mailto:sonukum870@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/sonu-kumar-614413192/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          navLinks.classList.remove("open");
+        }
+      });
+    });
+
+    // Contact form fake submit
+    const contactForm = document.getElementById("contact-form");
+    const contactToast = document.getElementById("contact-toast");
+
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      contactToast.style.display = "inline-flex";
+      contactForm.reset();
+      setTimeout(() => {
+        contactToast.style.display = "none";
+      }, 3000);
+    });
+
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
